@@ -59,7 +59,7 @@ func ConvertPDFText(path string) (BodyResult, MetaResult, error) {
 
 	br := make(chan BodyResult, 1)
 	go func() {
-		body, err := exec.Command("pdftotext", "-q", "-nopgbrk", "-enc", "UTF-8", "-eol", "unix", "-layout", path, "-").Output()
+		body, err := exec.Command("pdftotext", "-layout", "-q", "-nopgbrk", "-enc", "UTF-8", "-eol", "unix", path, "-").Output()
 		if err != nil {
 			bodyResult.err = err
 		}
